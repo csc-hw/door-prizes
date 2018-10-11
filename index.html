@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Door Prizes</title>
+    <meta name="author" content="Kyle Huggins">
+    <meta name="description" content="Door Prizes game for Friday's Seminars.">
+    <!-- <link rel="stylesheet" href="https://rawgit.com/kjhx/francisco/v1.4/francisco.css" /> -->
+    <link rel="stylesheet" href="css/node.css">
+    <link rel="stylesheet" href="css/core.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/core.js"></script>
+  </head>
+  <body>
+    <div frame>
+      <!---->
+      <div id="game_1">
+      <h1>Seminar Door Prizes</h1>
+        <div row>
+          <div column>
+            <label for="attendees">Attendees</label>
+            <textarea id="attendees" placeholder="Seperate names with newline." rows="8"></textarea>
+          </div>
+        </div>
+        <div row>
+          <button id="game_start">Begin</button>
+        </div>
+      </div>
+      <!---->
+      <div id="game_2">
+        <h1>Preparing game start...</h1>
+        <table>
+          <thead>
+            <tr>
+              <td>Image</td>
+              <td>Name</td>
+            </tr>
+          </thead>
+          <tbody id="playerboard">
+            <tr>
+              <td>Image</td>
+              <td>Username</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="game_3">
+        <h1>Running race</h1>
+        <p>spook</p>
+      </div>
+    </div>
+  </body>
+</html>
