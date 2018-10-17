@@ -24,30 +24,57 @@
           </div>
         </div>
         <div row>
-          <button id="game_start">Begin</button>
+          <div column>
+            <button id="game_preflight">Begin</button>
+            <p id="errorMessage"><span style="color: #fff;">ERROR_</span> Enter at least five canidates.</p>
+          </div>
         </div>
       </div>
       <!---->
       <div id="game_2">
         <h1>Preparing game start...</h1>
-        <table>
-          <thead>
-            <tr>
-              <td>Image</td>
-              <td>Name</td>
-            </tr>
-          </thead>
-          <tbody id="playerboard">
-            <tr>
-              <td>Image</td>
-              <td>Username</td>
-            </tr>
-          </tbody>
-        </table>
+        <div row>
+          <div column>
+            <p>Roster:</p>
+            <table>
+              <tbody id="playerboard">
+                <!-- jQuery inserts values dynamically here. -->
+              </tbody>
+            </table>
+          </div>
+          <div column>
+            <fieldset>
+              <legend>Game</legend>
+              <button id="game_start">Race</button>
+              <button id="game_cancel">Cancel</button>
+            </fieldset>
+          </div>
+        </div>
       </div>
       <div id="game_3">
-        <h1>Running race</h1>
-        <p>spook</p>
+        <h1>Running race...</h1>
+        <div row>
+          <div column>
+            <div id="raceboard">
+              <img id="racer_1" src="assets/wolf.png" height="125px">
+              <img id="racer_2" src="assets/wolf.png" height="125px">
+              <img id="racer_3" src="assets/wolf.png" height="125px">
+              <img id="racer_4" src="assets/wolf.png" height="125px">
+              <img id="racer_5" src="assets/wolf.png" height="125px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="game_4">
+        <h1>Winner</h1>
+        <div row>
+          <div column>
+            <img id="winner" height="250" style="filter: invert(100%);">
+            <h2>Congratulations, <span id="winnerName"></span>!</h2>
+            <p>You won!</p>
+            <button id="game_new">New Game</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

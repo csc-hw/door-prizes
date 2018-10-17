@@ -1,3 +1,18 @@
 /* Defaults
  –––––––––––––––––––––––*/
-div#game_2, div#game_3 { display: none; }
+div#game_2, div#game_3, div#game_4, p#errorMessage { display: none; }
+
+#playerboard img {
+  height: 75px;
+  margin-right: 4rem;
+  filter: invert(100%);
+}
+
+#raceboard {
+  width: 100%;
+}
+
+#raceboard img {
+  display: block;
+  filter: invert(100%);
+}
