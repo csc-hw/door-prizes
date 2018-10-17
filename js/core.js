@@ -2,29 +2,33 @@
  * doorprize.js (core.js)
  * by Kyle Huggins
  *
- * dependencies: jQuery 3.3.1
+ * dependencies: jQuery 3.x
  *
  * http://taz.harding.edu/~khuggins/dolphin.exe/
+ *
  */
 
 var MODE_VERBOSE = false;
 
 function verbose(msg) {
+  // Easily toggleable logging
   if (MODE_VERBOSE) {
     console.log(msg);
   }
 }
 
 function victory (index, name) {
+  // Populate victory page image and text
   var canvas = $("#winner")
   var winnerName = $("#winnerName")
   canvas.attr("src", "assets/" + icons[index]);
+  verbose(index);
   winnerName.html(name);
 }
 
 function goFlight(seed) {
-  // Prepare for race
   // Get players
+  // Get icons
   verbose("goFlight TRUE");
   var icons_root = ["wolf.png", "cat.png", "griffin.png", "bear.png", "viper.png"];
   icons = [];
@@ -56,6 +60,7 @@ function goFlight(seed) {
 }
 
 function showPane(identifier) {
+  // Switches the current viewport to game_identifier
   for (i = 1; i <= 4; i++) {
     $("#game_" + i).hide()
   }
@@ -64,6 +69,7 @@ function showPane(identifier) {
 }
 
 $(document).ready(function() {
+  // Document is ready
   // Declare common elements
   var btnStart = $("#game_preflight");
   var btnRace = $("#game_start");
@@ -90,12 +96,14 @@ $(document).ready(function() {
         arr_names.splice(index, 1);
       }
     });
-    // Preflight checks
+    // Preflight checks -
+    // Ensure we have more than five names
     if (arr_names.length < 5) {
       // FAIL
       $("#attendees").css("border-color", "red")
       $("#errorMessage").show();
     } else {
+      // PASS
       goFlight(arr_names);
     }
   });
@@ -109,12 +117,12 @@ $(document).ready(function() {
     var len = $("#raceboard").width();
     len -= 125;
 
-    // Populate correct images
+    // Populate images into raceboard
     for (var i = 1; i <= 5; i++) {
       $("#racer_" + i).attr("src", "assets/" + icons[i-1]);
     }
 
-    // Create random array of times for animate
+    // Create random array of times for animation length
     while (times.length < 5) {
       var temp = times.push((Math.floor(5 + Math.random()*(20 + 1 - 5))) * 1000);
       if(temp < 5000) {
@@ -124,6 +132,10 @@ $(document).ready(function() {
       }
     }
     verbose(times);
+
+    // Play start sound
+    var gameAudio = new Audio("assets/boop.mp3");
+    gameAudio.play();
 
     // Build out animation via left margin
     // Wait one sec before race start
@@ -136,9 +148,11 @@ $(document).ready(function() {
     }, 1000)
 
     var shortest = times[0];
-    var i_shortest;
+    var i_shortest = 0;
     var longest = times[0];
 
+    // Get shortest and longest times
+    // Setup timeouts accordingly
     jQuery.each(times, function(index, item) {
       if (item < shortest) {
         shortest = item;
@@ -152,9 +166,10 @@ $(document).ready(function() {
     verbose(shortest);
     verbose(longest);
 
-    // Wait longest time + 2 sec before moving on
+    // Wait longest time + 2 sec before switching viewport
     setTimeout(function() {
       victory(i_shortest, players[i_shortest]);
+      verbose(i_shortest);
       showPane(4);
     }, longest + 2000);
   })
